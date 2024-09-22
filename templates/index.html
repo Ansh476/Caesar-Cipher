@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher</title>
+</head>
+<body>
+    <Center>
+        <h1>Caesar Cipher</h1>
+        <form method="POST" action="/">
+            <label for="text">Enter the text:</label><br>
+            <input type="text" id="text" name="text" value="{{ request.form.text }}" required><br><br>
+            
+            <label for="shift">Enter the shift value:</label><br>
+            <input type="number" id="shift" name="shift" value="{{ request.form.shift }}" required><br><br>
+            
+            <label>Choose an option:</label><br>
+            <input type="radio" id="encrypt" name="choice" value="encrypt" 
+                {% if request.form.choice == 'encrypt' %} checked {% endif %}>
+            <label for="encrypt">Encrypt</label><br>
+            
+            <input type="radio" id="decrypt" name="choice" value="decrypt"
+                {% if request.form.choice == 'decrypt' %} checked {% endif %}>
+            <label for="decrypt">Decrypt</label><br><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if result %}
+            <h2>Result:</h2>
+            <h2>{{ result }}</h2>
+        {% endif %}
+    </Center>
+</body>
+</html>
